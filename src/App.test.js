@@ -10,9 +10,7 @@ it('renders without crashing', () => {
 });
 
 it('should handle onClick state change to show the game', () => {
-  const onClick = jest.fn();
   let wrapper = mount(<App /> );
-  wrapper.simulate('click');
   wrapper.find('.startButton').simulate('click');
   expect(wrapper.state().gameStarted).toEqual(true);
 });
