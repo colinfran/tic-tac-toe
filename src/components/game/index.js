@@ -30,10 +30,10 @@ export default class Game extends React.Component {
     return (
       <div>
         <div className="gameBtnContainer">
-          <Button className="gameBtnContainerBtn" variant="contained" color="primary" onClick={()=> this.restardGame()}>
+          <Button id="restartGame" className="gameBtnContainerBtn" variant="contained" color="primary" onClick={()=> this.restardGame()}>
             Restart Game
           </Button>
-          <Button className="gameBtnContainerBtn" variant="contained" color="primary">
+          <Button id="stepBack" className="gameBtnContainerBtn" variant="contained" color="primary">
             Step back
           </Button>
         </div>
