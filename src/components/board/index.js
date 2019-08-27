@@ -1,7 +1,30 @@
 import React from 'react';
+import Square from '../square';
 
 
 export default class Board extends React.Component {
+
+  playerMoves = () => {
+    return(
+      <div className="playerMovesContainer">
+        <div className="playerMovesContainerRow">
+          <Square />
+          <Square />
+          <Square />
+        </div>
+        <div className="playerMovesContainerRow">
+          <Square />
+          <Square />
+          <Square />
+        </div>
+        <div className="playerMovesContainerRow">
+          <Square />
+          <Square />
+          <Square />
+        </div>
+      </div>
+    );
+  }
 
   render(){
     return (
@@ -26,6 +49,7 @@ export default class Board extends React.Component {
             </div>
           </div>
         </div>
+        {this.playerMoves()}
       </div>
     );
   }

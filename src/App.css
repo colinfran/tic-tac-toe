@@ -84,3 +84,22 @@
 .column{
   border: 1px solid #fff;
 }
+
+
+.playerMovesContainer{
+  position: absolute;
+}
+
+.playerMovesContainerRow{
+  display:flex;
+  flex-direction: row;
+}
+
+/* Square */
+.square{
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 101px;
+  height: 101px;
+}

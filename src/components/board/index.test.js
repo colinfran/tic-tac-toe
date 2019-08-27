@@ -18,3 +18,8 @@ it('should render tic-tac-toe board lines', () => {
   expect(wrapper.exists('.boardRow3')).toEqual(true);
   expect(wrapper.exists('.column')).toEqual(true);
 });
+
+it('should render 9 squares inside tic-tac-toe board', () => {
+  let wrapper = mount(<Board /> );
+  expect(wrapper.find('.square')).toHaveLength(9);
+});
