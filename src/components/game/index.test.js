@@ -28,3 +28,12 @@ it('should restart game when restart button is clicked', () => {
   expect(wrapper.state().gameArray).toEqual([1, 1, 1, 1, 1, 1, 1, 1, 1]);
   expect(wrapper.state().playerTurn).toEqual('x');
 });
+
+it('should move back a step when step back button is clicked', () => {
+  let wrapper = mount(<Game /> );
+  wrapper.setState({ gameArray: ['x', 'o', 'x', 'o', 1, 1, 1, 1, 1], playerTurn: 'x', recordedMoves:[{record: ['x', 1, 1, 1, 1, 1, 1, 1, 1]},{record: ['x', 'o', 1, 1, 1, 1, 1, 1, 1]},{record: ['x', 'o', 'x', 1, 1, 1, 1, 1, 1]},{record: ['x', 'o', 'x', 'o', 1, 1, 1, 1, 1]}], recordedMovesIndex: 3 })
+  wrapper.find('#stepBack').first().simulate('click');
+  expect(wrapper.state().gameArray).toEqual(['x', 'o', 'x', 1, 1, 1, 1, 1, 1]);
+  wrapper.find('#stepBack').first().simulate('click');
+  expect(wrapper.state().gameArray).toEqual(['x', 'o', 1, 1, 1, 1, 1, 1, 1]);
+});
