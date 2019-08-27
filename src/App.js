@@ -1,6 +1,7 @@
 import React from 'react';
 import Game from './components/game';
 import './App.css';
+import Button from '@material-ui/core/Button';
 
 export default class App extends React.Component {
   constructor(props){
@@ -22,9 +23,9 @@ export default class App extends React.Component {
       return (
         <div className="gameOnLoad">
           Click start to start a game of tic-tac-toe
-          <button className="startButton" onClick={()=>this.setState({gameStarted: true})}>
+          <Button id="startButton" variant="contained" color="primary"  onClick={()=>this.setState({gameStarted: true})}>
             Start
-          </button>
+          </Button>
         </div>
       );
     }

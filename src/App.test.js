@@ -11,6 +11,6 @@ it('renders without crashing', () => {
 
 it('should handle onClick state change to show the game', () => {
   let wrapper = mount(<App /> );
-  wrapper.find('.startButton').simulate('click');
+  wrapper.find('#startButton').first().simulate('click');
   expect(wrapper.state().gameStarted).toEqual(true);
 });
