@@ -1,10 +1,13 @@
 import React from 'react';
 import Square from '../square';
 
-
+/**
+  This component represents the board of the tic-tac-toe game.
+**/
 export default class Board extends React.Component {
-  
+
   updateGameArray = (val, index) => {
+    /* set value at index in array to 'x' or 'o' to represent square clicked */
     var newArray = [...this.props.gameArray];
     newArray[index]=val;
     this.props.updateGameArray(newArray);
@@ -12,6 +15,7 @@ export default class Board extends React.Component {
 
 
   playerMoves = () => {
+    /* 3x3 squares to represent 3x3 in tic-tac-toe board */
     return(
       <div className="playerMovesContainer">
         <div className="playerMovesContainerRow">
@@ -34,6 +38,7 @@ export default class Board extends React.Component {
   }
 
   render(){
+    /* Tic-Tac-Toe Board Lines */
     return (
       <div className="boardContainer">
         <div>

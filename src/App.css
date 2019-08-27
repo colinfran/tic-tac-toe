@@ -54,6 +54,9 @@
 .bottomText{
   margin-top: 15px;
 }
+.styledBottomText{
+  font-size: calc(8px + 1vmin);
+}
 
 /* Board */
 .boardContainer{

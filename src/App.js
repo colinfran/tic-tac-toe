@@ -3,15 +3,20 @@ import Game from './components/game';
 import './App.css';
 import Button from '@material-ui/core/Button';
 
+/**
+  This is the first compoent that gets called in the index.js file.
+  This component is the root of all the other components.
+**/
 export default class App extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      gameStarted: false
+      gameStarted: false /** boolean value to represent showing game on page **/
     };
   }
 
   renderStart = () => {
+    /* displays the game once the user clicks the 'Start' Button */
     if (this.state.gameStarted){
       return (
         <div>
