@@ -31,3 +31,11 @@
     transform: rotate(360deg);
   }
 }
+
+/* App */
+.gameOnLoad{
+  display:flex;
+  flex-direction:column;
+  height: 100px;
+  justify-content: space-between;
+}
