@@ -12,7 +12,7 @@ export default class Square extends React.Component {
   render(){
     return (
       <div className="square" onClick={this.updateGameArray}>
-        {this.props.gameArray[this.props.idx]}
+        {this.props.gameArray[this.props.idx] === 1 ? " " : this.props.gameArray[this.props.idx]}
       </div>
     );
   }

@@ -51,6 +51,9 @@
 .gameBtnContainerBtn{
   width: 150px;
 }
+.bottomText{
+  margin-top: 15px;
+}
 
 /* Board */
 .boardContainer{
