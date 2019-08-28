@@ -21,7 +21,7 @@ export default class Game extends React.Component {
     };
   }
 
-  getGetOrdinal = (n) => {
+  getOrdinal = (n) => {
   /* function to return integer as string with ordinal ending */
     var s=["th","st","nd","rd"], v=n%100;
     return n+(s[(v-20)%10]||s[v]||s[0]);
@@ -35,7 +35,7 @@ export default class Game extends React.Component {
     for (var i = 0; i <= 6; i += 3) {
       if (arr[i] === turn && arr[i + 1] === turn && arr[i + 2] === turn){
         winClass = "winLine horizontalWin winRow" + (rowCount + 1);
-        this.setState({winType:`horizontal ${this.getGetOrdinal(rowCount + 1)} row`, winLine: winClass});
+        this.setState({winType:`horizontal ${this.getOrdinal(rowCount + 1)} row`, winLine: winClass});
         return true;
       }
       rowCount++;
@@ -44,7 +44,7 @@ export default class Game extends React.Component {
     for (i = 0; i <= 2; i++) {
       if (arr[i] === turn && arr[i + 3] === turn && arr[i + 6] === turn){
         winClass = "winLine verticalWin winColumn" + (columnCount+1);
-        this.setState({winType:`vertical ${this.getGetOrdinal(columnCount + 1)} column`, winLine: winClass});
+        this.setState({winType:`vertical ${this.getOrdinal(columnCount + 1)} column`, winLine: winClass});
         return true;
       }
       columnCount++;
@@ -80,7 +80,7 @@ export default class Game extends React.Component {
     });
   }
 
-  restardGame = () => {
+  restartGame = () => {
     /* restart all states on Restart Button Click */
     this.setState({
       gameArray: [1, 1, 1, 1, 1, 1, 1, 1, 1],
@@ -164,7 +164,7 @@ export default class Game extends React.Component {
     return (
       <div>
         <div className="gameBtnContainer">
-          <Button id="restartGame" className="gameBtnContainerBtn" variant="contained" color="primary" onClick={()=> this.restardGame()}>
+          <Button id="restartGame" className="gameBtnContainerBtn" variant="contained" color="primary" onClick={()=> this.restartGame()}>
             Restart Game
           </Button>
           <Button id="stepBack" className="gameBtnContainerBtn" variant="contained" color="primary" onClick={()=> this.stepBack()}>
