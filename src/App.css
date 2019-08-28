@@ -65,6 +65,7 @@
   margin: auto;
   display:flex;
   flex-direction: column;
+  position: relative;
 }
 
 .boardRow1{
@@ -112,6 +113,66 @@
   flex-direction: row;
 }
 
+.winLine{
+  display: flex;
+  border: 10px solid #3f51b5;
+  background-color: #3f51b5;
+  position: absolute;
+  border-radius: 25px;
+}
+
+.winColumn1{
+  left: 41px;
+  height: 285px;
+}
+
+.winColumn2{
+  left: 141px;
+  height: 285px;
+}
+
+.winColumn3{
+  left: 242px;
+  height: 285px;
+}
+
+.winRow1{
+  top: 43px;
+  width: 285px;
+}
+
+.winRow2{
+  top: 144px;
+  width: 285px;
+}
+
+.winRow3{
+  top: 245px;
+  width: 285px;
+}
+
+.winTopLeftToBottomRight{
+  left: 138px;
+  top: -60px;
+  height: 400px;
+  -ms-transform: rotate(-45deg);
+  -webkit-transform: rotate(-5deg);
+  transform: rotate(-45deg);
+  border: 12px solid #3f51b5;
+
+}
+
+.winBottomLeftToTopRight{
+  left: 141px;
+  top: -60px;
+  height: 400px;
+  -ms-transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);
+  border: 12px solid #3f51b5;
+
+}
+
 /* Square */
 .square{
   display:flex;
@@ -119,4 +180,9 @@
   justify-content: center;
   width: 101px;
   height: 101px;
+  z-index: 5;
+}
+
+.hidden{
+  display:none;
 }

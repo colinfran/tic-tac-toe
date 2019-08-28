@@ -31,7 +31,16 @@ it('should restart game when restart button is clicked', () => {
 
 it('should move back a step when step back button is clicked', () => {
   let wrapper = mount(<Game /> );
-  wrapper.setState({ gameArray: ['x', 'o', 'x', 'o', 1, 1, 1, 1, 1], playerTurn: 'x', recordedMoves:[{record: ['x', 1, 1, 1, 1, 1, 1, 1, 1]},{record: ['x', 'o', 1, 1, 1, 1, 1, 1, 1]},{record: ['x', 'o', 'x', 1, 1, 1, 1, 1, 1]},{record: ['x', 'o', 'x', 'o', 1, 1, 1, 1, 1]}], recordedMovesIndex: 3 })
+  wrapper.setState({
+    gameArray: ['x', 'o', 'x', 'o', 1, 1, 1, 1, 1],
+    playerTurn: 'x',
+    recordedMoves:[
+      {record: ['x', 1, 1, 1, 1, 1, 1, 1, 1]},
+      {record: ['x', 'o', 1, 1, 1, 1, 1, 1, 1]},
+      {record: ['x', 'o', 'x', 1, 1, 1, 1, 1, 1]},
+      {record: ['x', 'o', 'x', 'o', 1, 1, 1, 1, 1]}
+    ],
+    recordedMovesIndex: 3 });
   wrapper.find('#stepBack').first().simulate('click');
   expect(wrapper.state().gameArray).toEqual(['x', 'o', 'x', 1, 1, 1, 1, 1, 1]);
   wrapper.find('#stepBack').first().simulate('click');
@@ -43,6 +52,8 @@ it('should end the game if a winner is found', () => {
   wrapper.setState({ gameArray: ['x', 'x', 1, 'o', 'o', 1, 1, 1, 1], playerTurn: 'x' })
   wrapper.find('.square').at(2).simulate('click');
   expect(wrapper.state().outCome).toEqual('x');
+  expect(wrapper.state().winLine).toContain('winLine');
+
 });
 
 it('should end the game if there is a draw', () => {
@@ -67,6 +78,7 @@ it('should specify horizontal win when a user wins horizontally', () => {
   wrapper.find('.square').at(4).simulate('click');
   wrapper.find('.square').at(2).simulate('click');
   expect(wrapper.state().winType).toContain('horizontal');
+  expect(wrapper.state().winLine).toContain('horizontalWin');
 });
 
 it('should specify vertical win when a user wins vertical', () => {
@@ -77,6 +89,7 @@ it('should specify vertical win when a user wins vertical', () => {
   wrapper.find('.square').at(4).simulate('click');
   wrapper.find('.square').at(6).simulate('click');
   expect(wrapper.state().winType).toContain('vertical');
+  expect(wrapper.state().winLine).toContain('verticalWin');
 });
 
 it('should specify diagonal win when a user wins diagonal', () => {
@@ -87,4 +100,6 @@ it('should specify diagonal win when a user wins diagonal', () => {
   wrapper.find('.square').at(5).simulate('click');
   wrapper.find('.square').at(8).simulate('click');
   expect(wrapper.state().winType).toContain('diagonal');
+  expect(wrapper.state().winLine).toContain('diagonalWin');
+
 });

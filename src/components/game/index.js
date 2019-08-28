@@ -4,6 +4,8 @@ import Button from '@material-ui/core/Button';
 
 /**
   This component represents the board of the tic-tac-toe game.
+  All of the game's logic comes from this component as state values.
+  some of these state values are passed down to its child components
 **/
 export default class Game extends React.Component {
   constructor(props){
@@ -14,7 +16,8 @@ export default class Game extends React.Component {
       playerTurn: 'x', /**  player up to click a square **/
       recordedMovesIndex: 0, /**  maxIndex value in recordedMoves array **/
       outCome: "", /**  outcome of game, is empty string until win or draw **/
-      winType: "" /**  if win, was it diagnal, vertical, horizontal? **/
+      winType: "", /**  if win, was it diagnal, vertical, horizontal? **/
+      winLine: "hidden"/**  string to hold css className for win line **/
     };
   }
 
@@ -28,9 +31,11 @@ export default class Game extends React.Component {
     /* Checks for horizontal, vertical, and diagnal wins */
     var turn = this.state.playerTurn;
     var rowCount = 0;
+    var winClass = "hidden";
     for (var i = 0; i <= 6; i += 3) {
       if (arr[i] === turn && arr[i + 1] === turn && arr[i + 2] === turn){
-        this.setState({winType:`horizontal ${this.getGetOrdinal(rowCount + 1)} row`});
+        winClass = "winLine horizontalWin winRow" + (rowCount + 1);
+        this.setState({winType:`horizontal ${this.getGetOrdinal(rowCount + 1)} row`, winLine: winClass});
         return true;
       }
       rowCount++;
@@ -38,17 +43,20 @@ export default class Game extends React.Component {
     var columnCount = 0;
     for (i = 0; i <= 2; i++) {
       if (arr[i] === turn && arr[i + 3] === turn && arr[i + 6] === turn){
-        this.setState({winType:`vertical ${this.getGetOrdinal(columnCount + 1)} column`});
+        winClass = "winLine verticalWin winColumn" + (columnCount+1);
+        this.setState({winType:`vertical ${this.getGetOrdinal(columnCount + 1)} column`, winLine: winClass});
         return true;
       }
       columnCount++;
     }
     if (arr[0] === turn && arr[4] === turn && arr[8] === turn){
-      this.setState({winType:"diagonal top left to bottom right"});
+      winClass = "winLine diagonalWin winTopLeftToBottomRight";
+      this.setState({winType:"diagonal top left to bottom right", winLine: winClass});
       return true;
     }
     if (arr[2] === turn && arr[4] === turn && arr[6] === turn){
-      this.setState({winType:"diagonal bottom left to top right"});
+      winClass = "winLine diagonalWin winBottomLeftToTopRight";
+      this.setState({winType:"diagonal bottom left to top right", winLine: winClass});
       return true;
     }
     return false;
@@ -80,7 +88,8 @@ export default class Game extends React.Component {
       playerTurn: 'x',
       recordedMovesIndex: 0,
       outCome: "",
-      winType: ""
+      winType: "",
+      winLine: "hidden"
     })
   }
 
@@ -97,7 +106,8 @@ export default class Game extends React.Component {
         playerTurn: prevPlayerTurn,
         recordedMovesIndex: prevRecordedMovesIndex,
         outCome: "",
-        winType: ""
+        winType: "",
+        winLine: "hidden"
       })
     }
     else{
@@ -109,7 +119,8 @@ export default class Game extends React.Component {
         playerTurn: 'x',
         recordedMovesIndex: 0,
         outCome: "",
-        winType: ""
+        winType: "",
+        winLine: "hidden"
       })
     }
   }
@@ -161,7 +172,7 @@ export default class Game extends React.Component {
           </Button>
         </div>
         <div style={this.state.outCome !== "" ? {pointerEvents: 'none'} : {}} >
-          <Board gameArray={this.state.gameArray} updateGameArray={this.updateGameArray} playerTurn={this.state.playerTurn} />
+          <Board gameArray={this.state.gameArray} updateGameArray={this.updateGameArray} playerTurn={this.state.playerTurn} winLine={this.state.winLine}/>
           {this.renderBottomText()}
         </div>
       </div>

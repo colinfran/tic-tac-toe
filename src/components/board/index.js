@@ -37,6 +37,14 @@ export default class Board extends React.Component {
     );
   }
 
+  winningLine = () => {
+    /* 3x3 squares to represent 3x3 in tic-tac-toe board */
+    return(
+      <div className={this.props.winLine}>
+      </div>
+    );
+  }
+
   render(){
     /* Tic-Tac-Toe Board Lines */
     return (
@@ -62,6 +70,7 @@ export default class Board extends React.Component {
           </div>
         </div>
         {this.playerMoves()}
+        {this.winningLine()}
       </div>
     );
   }
